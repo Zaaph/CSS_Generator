@@ -1,11 +1,27 @@
 <?php
 
-function init_search($dir = '.') {
+function init_search($recurse = 0, $dir = '.') {
     if (!is_dir($dir)) {
         return false;
     }
     $files = array();
-    recurse_search($dir, $files);
+    if ($recurse === 1) {
+	recurse_search($dir, $files);
+	$images = image_search($files);
+	return $images;
+    }
+    $handle = opendir($dir);
+    while (($file = readdir($handle)) !== FALSE) {
+        if ($file == '.' || $file == '..') {
+            continue;
+        }
+        $filepath = $dir == '.' ? $file : $dir . '/' . $file;
+        if (is_file($filepath))
+            $files[] = $filepath;
+        else
+            continue;
+    }
+    closedir($handle);
     $images = image_search($files);
     return $images;
 }

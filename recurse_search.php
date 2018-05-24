@@ -6,9 +6,9 @@ function init_search($recurse = 0, $dir = '.') {
     }
     $files = array();
     if ($recurse === 1) {
-	recurse_search($dir, $files);
-	$images = image_search($files);
-	return $images;
+	   recurse_search($dir, $files);
+	   $images = image_search($files);
+	   return $images;
     }
     $handle = opendir($dir);
     while (($file = readdir($handle)) !== FALSE) {

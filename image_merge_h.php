@@ -15,7 +15,7 @@ function get_backg_size_h($arr) {
 	return $ret;
 }
 
-function image_merge_h($arr, $name = "sprite.png", $padding = 0) {
+function image_merge_h($arr, $name = "sprite.png", $padding = 20) {
 	$i = 0;
 	$j = 0;
 	if (is_file($name))

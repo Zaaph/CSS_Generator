@@ -10,9 +10,9 @@ function init_search($recurse = 0, $dir = '.') {
 	   $images = image_search($files);
 	   return $images;
     }
-    $handle = opendir($dir);
-    while (($file = readdir($handle)) !== FALSE) {
-        if ($file == '.' || $file == '..') {
+    $folder = opendir($dir);
+    while (($file = readdir($folder)) !== FALSE) {
+        if ($file === '.' || $file === '..' || $file === "sprite.png") {
             continue;
         }
         $filepath = $dir == '.' ? $file : $dir . '/' . $file;
@@ -21,26 +21,24 @@ function init_search($recurse = 0, $dir = '.') {
         else
             continue;
     }
-    closedir($handle);
+    closedir($folder);
     $images = image_search($files);
     return $images;
 }
 
 function recurse_search($dir, &$files) {
-    $handle = opendir($dir);
-    while (($file = readdir($handle)) !== FALSE) {
+    $folder = opendir($dir);
+    while (($file = readdir($folder)) !== FALSE) {
         if ($file == '.' || $file == '..') {
             continue;
         }
         $filepath = $dir == '.' ? $file : $dir . '/' . $file;
-        if (is_link($filepath))
-            continue;
         if (is_file($filepath))
             $files[] = $filepath;
         elseif (is_dir($filepath))
             recurse_search($filepath, $files);
     }
-    closedir($handle);
+    closedir($folder);
 }
 
 function image_search($files) {

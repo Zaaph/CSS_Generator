@@ -1,3 +1,5 @@
+#!/usr/bin/php
+
 <?php
 
 include('recurse_search.php');
@@ -28,7 +30,6 @@ function arg_check($argv = NULL) {
 		if ($key === "p" || $key === "padding")
 			$padding = $value;
 	}
-	var_dump($arr);
 	image_merge_h($arr, $output_img, $padding);
 	css_generator_h($arr, $output_css, $output_img, $padding);
 }

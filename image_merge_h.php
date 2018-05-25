@@ -5,7 +5,7 @@ function get_backg_size_h($arr, $name) {
 	$w = 0;
 	$h = array();
 	foreach ($arr as $value) {
-		if ($value !== $name) {
+		if ($value !== $name && $value !== "sprite.png") {
 			$w += getimagesize($value)[0];
 			$h[] = getimagesize($value)[1];
 		}
@@ -29,7 +29,7 @@ function image_merge_h($arr, $name = "sprite.png", $padding = 0) {
 	imagesavealpha($backg, true);
 	$img = $backg;
 	foreach ($arr as $value) {
-		if ($value !== "$name") {
+		if ($value !== "$name" && $value !== "sprite.png") {
 			$src = img_type_check($value);
 			$src_w = getimagesize($value)[0];
 			$src_h = getimagesize($value)[1];

@@ -4,7 +4,7 @@ function css_generator_h($arr, $name = "style.css", $sprite_name, $padding = 0) 
 	$i = 0;
 	$str = "";
 	foreach ($arr as $value) {
-		if ($sprite_name !== $value) {
+		if ($sprite_name !== $value && $value !== "sprite.png") {
 			$str .= ".";
 			$str .= get_img_name($value);
 			$i++;
@@ -16,7 +16,7 @@ function css_generator_h($arr, $name = "style.css", $sprite_name, $padding = 0) 
 	$str .= "\n{\ndisplay: inline-block;\nbackground: url('png.png') no-repeat;
 overflow: hidden;\ntext-indent: -9999px;\ntext-align: center;\n}\n\n";
 	foreach ($arr as $value) {
-		if ($sprite_name !== $value) {
+		if ($sprite_name !== $value && $value !== "sprite.png") {
 			$str .= "." . get_img_name($value) . "\n{\nbackground-position: ";
 			$str .= ($i + $padding);
 			$str .= "px -0px; width: " . getimagesize($value)[0] . "px; height: ";

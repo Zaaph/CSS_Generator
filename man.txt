@@ -1,0 +1,8 @@
+Prototype : css_generator [options] [folder_to_search]
+Concatenation is done horizontally by default.Please note that if no folder is given the default folder to search will be '.'
+Options :-r, --recursive : search for images recursively in all subfolders
+-i [sprite_name], --output-image=[sprite_name] : the output sprite will be named [sprite_name]
+-s [style_name], --output-style=[style _name] : the output stylesheet will be named [style_name]
+-p [X], --padding=[X] : images in the sprite will be concatenated with a padding of [X] pixels
+-v, --vertical : images will be concatenated vertically
+-d, --diagonal : images will be	concatenated diagonally

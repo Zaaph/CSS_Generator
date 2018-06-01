@@ -33,8 +33,8 @@ function image_merge_v($arr, $name = "sprite.png", $padding = 0) {
 			$src = img_type_check($value);
 			$src_w = getimagesize($value)[0];
 			$src_h = getimagesize($value)[1];
-			imagecopymerge($img, $src, $padding, $i+$padding,
-				     0, 0, $src_w, $src_h, 100);
+			imagecopy($img, $src, $padding, $i+$padding,
+				     0, 0, $src_w, $src_h);
 			$i += $src_h + $padding;
 		}
 	}
